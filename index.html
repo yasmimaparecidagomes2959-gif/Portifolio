@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#6f2438">
+  <title>Yasmim | Portfólio Profissional</title>
+  <style>
+    :root {
+      --wine: #70283d;
+      --wine-dark: #4b1929;
+      --rose: #a75b70;
+      --cream: #f7f3ef;
+      --paper: #fffdfa;
+      --ink: #262227;
+      --muted: #615a60;
+      --line: #ebdfe2;
+      --gold: #b18a59;
+      --shadow: 0 18px 50px rgba(61, 24, 35, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.7;
+      text-align: justify;
+      font-weight: 700;
+    }
+
+    body * { font-family: Arial, Helvetica, sans-serif; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    p, li, span, strong, small, div { font-weight: 700; }
+    h1, h2, h3, h4, h5 { margin: 0; font-weight: 700; }
+
+    .wrap {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 253, 250, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      font-size: 1.4rem;
+      letter-spacing: 0.08em;
+      color: var(--wine);
+      font-weight: 800;
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .navlinks a {
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .navlinks a:hover { color: var(--wine); }
+
+    .menu-btn {
+      display: none;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 8px 12px;
+      background: #fff;
+      color: var(--wine);
+      font-weight: 700;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #f7f0ee 0%, #fffdfc 52%, #efe4e5 100%);
+      border-bottom: 1px solid var(--line);
+      padding: 78px 0 60px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.7fr;
+      gap: 52px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--wine);
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    h1 {
+      margin-top: 18px;
+      font-size: clamp(3.1rem, 6vw, 5.8rem);
+      line-height: 0.92;
+      letter-spacing: -0.06em;
+      color: var(--wine-dark);
+    }
+
+    .hero h2 {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      font-weight: 700;
+    }
+
+    .hero p {
+      margin-top: 18px;
+      max-width: 660px;
+      color: #4f4a4d;
+      font-size: 1.02rem;
+    }
+
+    .actions {
+      margin-top: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--wine);
+      font-size: 0.9rem;
+      font-weight: 800;
+      transition: 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn.primary {
+      background: var(--wine);
+      color: #fff;
+    }
+
+    .btn.primary:hover {
+      background: var(--wine-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn.secondary {
+      background: transparent;
+      color: var(--wine);
+    }
+
+    .btn.secondary:hover {
+      background: #f3e8eb;
+    }
+
+    .profile-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 28px 24px;
+      text-align: center;
+    }
+
+    .avatar {
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(145deg, #ead9dc, #f9f1ee);
+      border: 7px solid #fff;
+      color: var(--wine);
+      font-size: 3.1rem;
+      font-weight: 800;
+    }
+
+    .profile-card h3 {
+      font-size: 1.6rem;
+      color: var(--wine-dark);
+    }
+
+    .profile-card p {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .profile-tag {
+      display: inline-block;
+      margin-top: 15px;
+      background: #f5e9ec;
+      color: var(--wine);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 0.75rem;
+      font-weight: 800;
+    }
+
+    section {
+      padding: 72px 0;
+    }
+
+    .section-head {
+      margin-bottom: 28px;
+    }
+
+    .kicker {
+      color: var(--rose);
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    h2.section-title {
+      margin-top: 8px;
+      color: var(--wine-dark);
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+    }
+
+    .section-desc {
+      margin-top: 10px;
+      max-width: 720px;
+      color: var(--muted);
+    }
+
+    .about-grid,
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .panel,
+    .project,
+    .feature-card,
+    .square-item {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow: 0 8px 26px rgba(62, 25, 38, 0.04);
+    }
+
+    .panel,
+    .feature-card,
+    .square-item {
+      padding: 26px;
+    }
+
+    .panel h3,
+    .feature-card h3 {
+      font-size: 1.18rem;
+      color: var(--wine);
+      margin-bottom: 12px;
+    }
+
+    .panel p,
+    .feature-card p,
+    .square-item p {
+      color: #514a4e;
+      margin: 0;
+    }
+
+    .traits {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 18px;
+    }
+
+    .chip {
+      background: #f5e9ec;
+      color: var(--wine);
+      border: 1px solid #e9d4da;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 0.8rem;
+      font-weight: 800;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .project {
+      padding: 26px;
+    }
+
+    .project.featured {
+      border-top: 4px solid var(--wine);
+    }
+
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .project h3 {
+      color: var(--wine-dark);
+      font-size: 1.55rem;
+      margin-bottom: 6px;
+    }
+
+    .project-sub {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .pill {
+      background: #f2e6e9;
+      color: var(--wine);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 0.72rem;
+      white-space: nowrap;
+      font-weight: 800;
+    }
+
+    .project p,
+    .project li {
+      color: #564e52;
+      margin: 10px 0;
+    }
+
+    .project ul {
+      padding-left: 18px;
+      margin: 14px 0;
+    }
+
+    .stat {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #f8eef1;
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin-top: 18px;
+    }
+
+    .stat strong {
+      color: var(--wine);
+      font-family: Georgia, serif;
+      font-size: 1.8rem;
+      line-height: 1;
+    }
+
+    .stat span {
+      color: #655d62;
+      font-size: 0.84rem;
+    }
+
+    .timeline {
+      border-left: 2px solid #e7d7db;
+      padding-left: 20px;
+      margin-top: 8px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-bottom: 18px;
+    }
+
+    .timeline-item:last-child { padding-bottom: 0; }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -27px;
+      top: 8px;
+      width: 11px;
+      height: 11px;
+      background: var(--rose);
+      border: 3px solid var(--cream);
+      border-radius: 50%;
+    }
+
+    .timeline-item h3 {
+      color: var(--wine-dark);
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+
+    .timeline-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .icon-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #f8ebee, #f2dee2);
+      color: var(--wine);
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      transition: transform 0.24s ease, box-shadow 0.24s ease;
+      box-shadow: 0 8px 18px rgba(112, 40, 61, 0.08);
+    }
+
+    .icon-badge:hover {
+      transform: translateY(-4px) rotate(-4deg);
+      box-shadow: 0 14px 22px rgba(112, 40, 61, 0.10);
+    }
+
+    .icon-badge svg,
+    .project-icon svg {
+      width: 22px;
+      height: 22px;
+      display: block;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.9;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .square-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .square-item {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .square-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 25px rgba(66, 28, 40, 0.06);
+    }
+
+    .square-item h4 {
+      margin: 10px 0 8px;
+      color: var(--wine-dark);
+      font-size: 1.14rem;
+    }
+
+    .tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .tool {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 9px 12px;
+      font-size: 0.82rem;
+      color: #544d51;
+    }
+
+    .small-note {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .quote {
+      background: var(--wine-dark);
+      color: #fff8f5;
+      border-radius: 24px;
+      padding: 30px 34px;
+      box-shadow: var(--shadow);
+    }
+
+    .quote p {
+      color: #fff8f5;
+      font-size: clamp(1.28rem, 2.5vw, 2.05rem);
+      line-height: 1.35;
+      font-weight: 700;
+    }
+
+    .quote span {
+      display: block;
+      margin-top: 14px;
+      color: #efccd5;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    footer {
+      background: var(--wine-dark);
+      color: #f9ecf0;
+      padding: 26px 24px;
+      text-align: center;
+      font-size: 0.82rem;
+    }
+
+    footer span {
+      color: #d5abb5;
+    }
+
+    .project-visual {
+      height: 180px;
+      border-radius: 18px;
+      margin: 16px 0 18px;
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(104, 39, 56, 0.08);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2);
+    }
+
+    .project-visual::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.16), rgba(255,255,255,0));
+    }
+
+    .project-icon {
+      position: relative;
+      z-index: 1;
+      width: 78px;
+      height: 78px;
+      border-radius: 22px;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      box-shadow: 0 14px 24px rgba(0,0,0,0.08);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .project-visual:hover .project-icon {
+      transform: translateY(-8px) rotate(-5deg) scale(1.04);
+      box-shadow: 0 18px 28px rgba(0,0,0,0.12);
+    }
+
+    .project-icon svg {
+      width: 28px;
+      height: 28px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .visual-one {
+      background: linear-gradient(135deg, #7c2b40, #c78b96);
+    }
+
+    .visual-two {
+      background: linear-gradient(135deg, #58795c, #b5c9b0);
+    }
+
+    @media (max-width: 800px) {
+      .hero-grid,
+      .about-grid,
+      .two-col,
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 62px;
+      }
+
+      .nav {
+        position: relative;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .navlinks {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: rgba(255, 253, 250, 0.98);
+        border-bottom: 1px solid var(--line);
+        padding: 16px 24px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .navlinks.open {
+        display: flex;
+      }
+
+      section {
+        padding: 54px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav">
+      <a class="brand" href="#inicio">Y.</a>
+      <button class="menu-btn" id="menuBtn" type="button" aria-label="Abrir menu">Menu</button>
+      <div class="navlinks" id="navlinks">
+        <a href="#sobre">Sobre mim</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#formacao">Formação</a>
+        <a href="#habilidades">Habilidades</a>
+        <a href="#objetivos">Objetivos</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Portfólio profissional</div>
+          <h1>Yasmim.</h1>
+          <h2>Estudante • Tecnologia • Sustentabilidade • Cuidado com os animais</h2>
+          <p>Sou uma pessoa curiosa, comunicativa e persistente. Gosto de transformar ideias em projetos, aprender na prática e encontrar soluções para desafios reais. Estou construindo minha trajetória profissional com dedicação e vontade de evoluir.</p>
+          <div class="actions">
+            <a class="btn primary" href="#projetos">Conheça meus projetos</a>
+            <button class="btn secondary" type="button">Imprimir / salvar currículo em PDF</button>
+          </div>
+        </div>
+
+        <aside class="profile-card">
+          <div class="avatar">Y</div>
+          <h3>Yasmim</h3>
+          <p>Curvelo — Minas Gerais</p>
+          <p>Ensino Médio em conclusão</p>
+          <span class="profile-tag">Em busca de oportunidades</span>
+        </aside>
+      </div>
+    </section>
+
+    <section id="sobre">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">01 / Apresentação</div>
+          <h2 class="section-title">Sobre mim</h2>
+          <p class="section-desc">Um pouco sobre minha história, meu jeito de trabalhar e o que me motiva.</p>
+        </div>
+
+        <div class="about-grid">
+          <article class="panel">
+            <h3>Minha trajetória</h3>
+            <p>Meu nome é Yasmim, moro em Curvelo–MG e estou concluindo o Ensino Médio na Escola Estadual Irmã Raimunda Marques. Sou apaixonada por animais e tenho interesse em tecnologia, inovação e sustentabilidade. Gosto de aprender coisas novas, conhecer outras áreas e me desafiar.</p>
+          </article>
+
+          <article class="panel">
+            <h3>Meu jeito de trabalhar</h3>
+            <p>Sou comunicativa, gentil e tenho facilidade para me adaptar a diferentes situações. Quando assumo uma responsabilidade, procuro me dedicar e entregar um trabalho bem-feito. Sou persistente: pesquiso, testo possibilidades e continuo tentando até encontrar uma solução.</p>
+            <div class="traits">
+              <span class="chip">Comunicação</span>
+              <span class="chip">Persistência</span>
+              <span class="chip">Adaptabilidade</span>
+              <span class="chip">Criatividade</span>
+              <span class="chip">Companheirismo</span>
+              <span class="chip">Curiosidade</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projetos" style="background:#f1e9e7;">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">02 / Experiência prática</div>
+          <h2 class="section-title">Projetos e conquistas</h2>
+          <p class="section-desc">Experiências acadêmicas em que pude pesquisar, criar, testar ideias e trabalhar com desafios reais.</p>
+        </div>
+
+        <div class="cards">
+          <article class="project featured">
+            <div class="project-top">
+              <div>
+                <h3>Minha Escola Mais Verde</h3>
+                <div class="project-sub">Liga STEAM • Projeto de sustentabilidade e tecnologia</div>
+              </div>
+              <span class="pill">Destaque</span>
+            </div>
+            <div class="project-visual visual-one">
+              <div class="project-icon" aria-label="Ícone de sustentabilidade">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c0-4.5-3.5-8-8-8-2.4 0-4.5 1-6 2.8C6 8.9 7 12 9 14.3c1.5 1.7 3.8 2.7 6.3 2.7 1.7 0 3.2-.5 4.7-1.5"/><path d="M12 5V3"/><path d="M9 7c1.5-1.5 3.3-2.3 5.5-2.5"/><path d="M10 18c1.2 0 2.1-.2 3.1-.8"/></svg>
+              </div>
+            </div>
+            <p>Identifiquei problemas reais da escola e participei da criação de uma solução tecnológica integrada para apoiar a gestão da sustentabilidade escolar.</p>
+            <ul>
+              <li>Captação e reaproveitamento de água.</li>
+              <li>Redução do desperdício de alimentos e compostagem.</li>
+              <li>Arborização e ações de cuidado ambiental.</li>
+              <li>Propostas envolvendo energia solar e monitoramento de CO₂.</li>
+              <li>Uso de ESP32 e recursos digitais para monitoramento.</li>
+            </ul>
+            <p>O desenvolvimento exigiu pesquisa, testes, correção de erros e aprendizado contínuo. Assumi a construção do sistema e transformei ideias em funcionalidades, mesmo sem experiência anterior em um projeto dessa dimensão.</p>
+            <div class="stat">
+              <strong>Top 10</strong>
+              <span>Projeto entre os 10 selecionados da competição Liga STEAM.</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-top">
+              <div>
+                <h3>Guardiões do Clima</h3>
+                <div class="project-sub">2º ano do Ensino Médio</div>
+              </div>
+              <span class="pill">Participação</span>
+            </div>
+            <div class="project-visual visual-two">
+              <div class="project-icon" aria-label="Ícone de clima">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18h10a4 4 0 0 0 .7-7.9A5.5 5.5 0 0 0 12.1 5a5 5 0 0 0-4.9 3.7A4.2 4.2 0 0 0 7 18Z"/><path d="M9 18v2"/><path d="M15 18v2"/><path d="M12 20v2"/></svg>
+              </div>
+            </div>
+            <p>Participei do projeto Guardiões do Clima durante o segundo ano do Ensino Médio. A experiência ampliou meu contato com sustentabilidade e com iniciativas ambientais na escola e na comunidade.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="formacao">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">03 / Formação</div>
+          <h2 class="section-title">Formação e cursos</h2>
+          <p class="section-desc">Conhecimentos que venho construindo para ampliar minhas possibilidades profissionais.</p>
+        </div>
+
+        <div class="two-col">
+          <article class="feature-card">
+            <span class="icon-badge" aria-label="Formação acadêmica">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9.5 12 5l9 4.5-9 4.5L3 9.5Z"/><path d="M7 11.5v4.5c0 1.5 2.2 3 5 3s5-1.5 5-3v-4.5"/><path d="M21 9.5V16"/></svg>
+            </span>
+            <h3>Formação acadêmica</h3>
+            <div class="timeline">
+              <div class="timeline-item">
+                <h3>Ensino Médio</h3>
+                <p>Em conclusão — Escola Estadual Irmã Raimunda Marques, Curvelo–MG.</p>
+              </div>
+              <div class="timeline-item">
+                <h3>Desenvolvimento de Sistemas</h3>
+                <p>Curso em andamento.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="feature-card">
+            <span class="icon-badge" aria-label="Cursos e qualificações">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h10l4 4v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/><path d="M15 4v5h5"/><path d="M8 13h8"/><path d="M8 17h8"/></svg>
+            </span>
+            <h3>Cursos e qualificações</h3>
+            <div class="timeline">
+              <div class="timeline-item">
+                <h3>Auxiliar de Veterinária</h3>
+                <p>Curso realizado.</p>
+              </div>
+              <div class="timeline-item">
+                <h3>Inteligência Emocional</h3>
+                <p>Curso realizado.</p>
+              </div>
+              <div class="timeline-item">
+                <h3>Administração</h3>
+                <p>Curso iniciado, não concluído.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="habilidades" style="background:#f1e9e7;">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">04 / Competências</div>
+          <h2 class="section-title">Habilidades e ferramentas</h2>
+          <p class="section-desc">Competências desenvolvidas em atividades escolares, cursos e projetos práticos.</p>
+        </div>
+
+        <div class="two-col">
+          <div class="square-grid">
+            <div class="square-item">
+              <span class="icon-badge" aria-label="Comunicação">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 18V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H9l-4 3v-3H7a2 2 0 0 1-2-2Z"/><path d="M8 10h8"/><path d="M8 14h5"/></svg>
+              </span>
+              <h4>Comunicação</h4>
+              <p>Sociável, amigável e aberta a compartilhar ideias e ouvir diferentes opiniões.</p>
+            </div>
+            <div class="square-item">
+              <span class="icon-badge" aria-label="Organização">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5A2.5 2.5 0 0 1 6.5 5H9l2 2h6.5A2.5 2.5 0 0 1 20 9.5v7A2.5 2.5 0 0 1 17.5 19h-11A2.5 2.5 0 0 1 4 16.5v-9Z"/><path d="M8 12h8"/><path d="M8 15h5"/></svg>
+              </span>
+              <h4>Organização</h4>
+              <p>Cuido das minhas responsabilidades, das minhas coisas e dos espaços que compartilho.</p>
+            </div>
+            <div class="square-item">
+              <span class="icon-badge" aria-label="Persistência">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15V8.5A2.5 2.5 0 0 1 8.5 6H10v10H8.5A2.5 2.5 0 0 1 6 13.5V15Z"/><path d="M10 6h4.5A2.5 2.5 0 0 1 17 8.5V15"/><path d="M14 18h3.5A2.5 2.5 0 0 0 20 15.5V13"/></svg>
+              </span>
+              <h4>Persistência</h4>
+              <p>Pesquiso, testo e tento novamente quando encontro um desafio pelo caminho.</p>
+            </div>
+            <div class="square-item">
+              <span class="icon-badge" aria-label="Colaboração">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M15 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M4.5 18a5.5 5.5 0 0 1 9-4.2"/><path d="M14.5 18a5.5 5.5 0 0 0 5-4.2"/><path d="M12 14.5c-1.5 0-2.8.8-3.5 2"/><path d="M12 14.5c1.5 0 2.8.8 3.5 2"/></svg>
+              </span>
+              <h4>Colaboração</h4>
+              <p>Gosto de ajudar, trabalhar em equipe e construir soluções com outras pessoas.</p>
+            </div>
+          </div>
+
+          <article class="feature-card">
+            <span class="icon-badge" aria-label="Ferramentas e tecnologias">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5.5 18.5 10l-5 5L9 10.5l5-5Z"/><path d="M6 14.5 4 18l3.5 2 2.5-2.5"/><path d="M15 10l4 4"/><path d="M9 10 5 14"/></svg>
+            </span>
+            <h3>Ferramentas e tecnologias</h3>
+            <div class="tools">
+              <span class="tool">Visual Studio Code</span>
+              <span class="tool">XAMPP</span>
+              <span class="tool">Banco de dados</span>
+              <span class="tool">ESP32</span>
+              <span class="tool">Inteligência Artificial</span>
+              <span class="tool">ChatGPT</span>
+              <span class="tool">Qwen</span>
+            </div>
+            <p class="small-note">Ferramentas utilizadas como apoio em pesquisas, desenvolvimento, programação e prototipagem.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="objetivos">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">05 / Próximos passos</div>
+          <h2 class="section-title">Objetivos profissionais</h2>
+        </div>
+
+        <div class="quote">
+          <p>“Quero construir uma trajetória da qual eu tenha orgulho: aprender continuamente, contribuir com bons resultados e transformar oportunidades em crescimento.”</p>
+          <span>Minha visão de futuro</span>
+        </div>
+
+        <div class="about-grid" style="margin-top:22px;">
+          <article class="panel">
+            <h3>O que busco</h3>
+            <p>Minha primeira oportunidade profissional, na qual eu possa adquirir experiência, desenvolver minhas habilidades, aprender com outras pessoas e contribuir com dedicação e responsabilidade.</p>
+          </article>
+          <article class="panel">
+            <h3>Onde quero chegar</h3>
+            <p>Conquistar independência profissional e financeira, construir uma carreira sólida e, futuramente, realizar o sonho de ter minha própria empresa.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>Yasmim <span>•</span> Portfólio Profissional <span>•</span> Curvelo, MG</footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navlinks = document.getElementById('navlinks');
+
+    menuBtn.addEventListener('click', () => {
+      navlinks.classList.toggle('open');
+    });
+
+    navlinks.querySelectorAll('a').forEach((a) => {
+      a.addEventListener('click', () => navlinks.classList.remove('open'));
+    });
+  </script>
+</body>
+</html>

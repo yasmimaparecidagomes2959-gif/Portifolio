@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#6f2438">
+<title>Yasmim | Portfólio Profissional</title>
+<style>
+:root{
+  --wine:#70283d;--wine-dark:#4b1929;--rose:#a75b70;--cream:#f7f3ef;
+  --paper:#fffdfa;--ink:#282329;--muted:#716a70;--line:#e8dfe1;
+  --gold:#b18a59;--shadow:0 18px 55px rgba(65,28,42,.09);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.65}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(255,253,250,.93);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{max-width:1160px;margin:auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font-family:Georgia,serif;font-size:1.35rem;color:var(--wine);font-weight:bold;letter-spacing:.04em}
+.navlinks{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.navlinks a{font-size:.86rem;color:var(--muted);font-weight:600}
+.navlinks a:hover{color:var(--wine)}
+.menu-btn{display:none;border:1px solid var(--line);background:white;border-radius:10px;padding:8px 12px;color:var(--wine)}
+.wrap{max-width:1160px;margin:auto;padding:0 24px}
+.hero{padding:76px 0 58px;background:linear-gradient(120deg,#f7f0ee 0%,#fffdfa 58%,#efe3e4 100%);border-bottom:1px solid var(--line)}
+.hero-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:54px;align-items:center}
+.eyebrow{display:inline-flex;gap:9px;align-items:center;color:var(--wine);font-size:.75rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+.eyebrow:before{content:"";width:28px;height:1px;background:var(--gold)}
+h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(3.2rem,7vw,5.7rem);line-height:.98;letter-spacing:-.045em;color:var(--wine-dark);margin:20px 0}
+.hero h2{font-size:1.12rem;font-weight:600;color:var(--muted);margin:0 0 20px}
+.hero p{max-width:650px;color:#5d555b;font-size:1.04rem}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 19px;border-radius:999px;font-size:.9rem;font-weight:750;border:1px solid var(--wine);transition:.2s;cursor:pointer}
+.btn.primary{background:var(--wine);color:white}.btn.primary:hover{background:var(--wine-dark);transform:translateY(-2px)}
+.btn.secondary{color:var(--wine);background:transparent}.btn.secondary:hover{background:#f1e5e8}
+.profile-card{background:var(--paper);padding:28px;border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);text-align:center;position:relative}
+.avatar{width:142px;height:142px;margin:0 auto 18px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#ead8dc,#f8eeeb);border:7px solid white;box-shadow:0 8px 25px #4b19291a;color:var(--wine);font-family:Georgia,serif;font-size:3.4rem}
+.profile-card h3{font-family:Georgia,serif;font-size:1.55rem;color:var(--wine-dark);margin:0}
+.profile-card p{font-size:.9rem;color:var(--muted);margin:5px 0}
+.profile-tag{display:inline-block;margin-top:13px;padding:7px 12px;border-radius:30px;background:#f4e9eb;color:var(--wine);font-size:.75rem;font-weight:750}
+section{padding:72px 0}
+.section-head{margin-bottom:30px}
+.kicker{color:var(--rose);font-size:.72rem;font-weight:850;letter-spacing:.16em;text-transform:uppercase}
+h2.section-title{font-family:Georgia,serif;font-size:clamp(2rem,4vw,3rem);color:var(--wine-dark);margin:7px 0 10px;line-height:1.1}
+.section-desc{color:var(--muted);max-width:720px;margin:0}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:26px;box-shadow:0 8px 28px rgba(65,28,42,.035)}
+.panel h3{margin:0 0 12px;color:var(--wine);font-size:1.08rem}
+.panel p{margin:0;color:#5e575d}
+.traits{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
+.chip{background:#f5eaec;color:var(--wine);border:1px solid #ead9de;padding:7px 12px;border-radius:30px;font-size:.82rem;font-weight:650}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.project{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:27px;box-shadow:0 8px 28px rgba(65,28,42,.035)}
+.project.featured{border-top:4px solid var(--wine)}
+.project-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.project h3{font-family:Georgia,serif;color:var(--wine-dark);font-size:1.5rem;margin:0 0 7px}
+.project p{color:#5e575d;margin:12px 0}
+.pill{white-space:nowrap;border-radius:30px;background:#f3e7e9;color:var(--wine);font-size:.72rem;font-weight:800;padding:6px 10px}
+.project ul{padding-left:19px;color:#5e575d;margin-bottom:0}
+.project li{margin:5px 0}
+.stat{display:flex;align-items:center;gap:12px;background:#f7eff0;border-radius:14px;padding:13px 15px;margin-top:17px}
+.stat strong{font-family:Georgia,serif;font-size:1.7rem;color:var(--wine)}
+.stat span{font-size:.84rem;color:#665960}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.timeline{border-left:2px solid #e7d6db;padding-left:20px}
+.timeline-item{position:relative;padding:0 0 22px}
+.timeline-item:before{content:"";position:absolute;left:-27px;top:7px;width:11px;height:11px;background:var(--rose);border:3px solid var(--cream);border-radius:50%}
+.timeline-item h3{margin:0;color:var(--wine-dark);font-size:1rem}
+.timeline-item p{margin:4px 0 0;color:var(--muted);font-size:.92rem}
+.skill-list{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.skill{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px}
+.skill strong{display:block;color:var(--wine);font-size:.92rem}
+.skill span{font-size:.82rem;color:var(--muted)}
+.tools{display:flex;flex-wrap:wrap;gap:10px}
+.tool{padding:10px 14px;background:var(--paper);border:1px solid var(--line);border-radius:12px;color:#5d5058;font-size:.88rem}
+.quote{background:var(--wine-dark);color:#fff8f5;border-radius:24px;padding:34px}
+.quote p{font-family:Georgia,serif;font-size:clamp(1.35rem,3vw,2rem);line-height:1.35;margin:0}
+.quote span{display:block;color:#e5cbd1;margin-top:16px;font-size:.85rem}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.contact-note{color:var(--muted);font-size:.92rem}
+.contact-line{padding:12px 0;border-bottom:1px solid var(--line);color:#51484f}
+.contact-line strong{display:block;color:var(--wine);font-size:.78rem;text-transform:uppercase;letter-spacing:.08em}
+footer{background:var(--wine-dark);color:#f6e9ec;padding:28px 24px;text-align:center;font-size:.82rem}
+footer span{color:#d9b7c0}
+.small-note{font-size:.78rem;color:var(--muted);margin-top:15px}
+@media(max-width:800px){
+ .hero-grid,.about-grid,.cards,.two-col,.contact-grid{grid-template-columns:1fr}
+ .hero{padding:54px 0 42px}.profile-card{max-width:420px}
+ .nav{align-items:flex-start}.menu-btn{display:block}
+ .navlinks{display:none;position:absolute;top:60px;left:0;right:0;background:var(--paper);padding:18px 24px;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start}
+ .navlinks.open{display:flex}
+ section{padding:54px 0}
+}
+@media print{
+ .topbar,.actions,.btn{display:none!important}
+ body{background:white}.hero{padding:28px 0}.wrap{max-width:none}
+ section{padding:25px 0;break-inside:avoid}
+ .panel,.project,.profile-card{box-shadow:none;break-inside:avoid}
+ footer{background:white;color:#333;border-top:1px solid #ddd}
+}
+</style>
+</head>
+<body>
+<header class="topbar">
+ <nav class="nav">
+  <a class="brand" href="#inicio">Y.</a>
+  <button class="menu-btn" id="menuBtn" aria-label="Abrir menu">Menu</button>
+  <div class="navlinks" id="navlinks">
+   <a href="#sobre">Sobre mim</a><a href="#projetos">Projetos</a><a href="#formacao">Formação</a><a href="#habilidades">Habilidades</a><a href="#objetivos">Objetivos</a><a href="#contato">Contato</a>
+  </div>
+ </nav>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+ <div class="wrap hero-grid">
+  <div>
+   <div class="eyebrow">Portfólio profissional</div>
+   <h1>Yasmim<span style="color:var(--gold)">.</span></h1>
+   <h2>Estudante • Tecnologia • Sustentabilidade • Cuidado com os animais</h2>
+   <p>Sou uma pessoa curiosa, comunicativa e persistente. Gosto de transformar ideias em projetos, aprender na prática e encontrar soluções para desafios reais. Estou construindo minha trajetória profissional com dedicação e vontade de evoluir.</p>
+   <div class="actions">
+    <a class="btn primary" href="#projetos">Conheça meus projetos</a>
+    <button class="btn secondary" onclick="window.print()">Imprimir / salvar currículo em PDF</button>
+   </div>
+  </div>
+  <aside class="profile-card">
+   <div class="avatar" aria-label="Iniciais de Yasmim">Y</div>
+   <h3>Yasmim</h3>
+   <p>Curvelo — Minas Gerais</p>
+   <p>Ensino Médio em conclusão</p>
+   <span class="profile-tag">Em busca de oportunidades</span>
+  </aside>
+ </div>
+</section>
+
+<section id="sobre">
+ <div class="wrap">
+  <div class="section-head"><div class="kicker">01 / Apresentação</div><h2 class="section-title">Sobre mim</h2><p class="section-desc">Um pouco sobre minha história, meu jeito de trabalhar e o que me motiva.</p></div>
+  <div class="about-grid">
+   <article class="panel">
+    <h3>Minha trajetória</h3>
+    <p>Meu nome é Yasmim, moro em Curvelo–MG e estou concluindo o Ensino Médio na Escola Estadual Irmã Raimunda Marques. Sou apaixonada por animais e tenho interesse em tecnologia, inovação e sustentabilidade. Gosto de aprender coisas novas, conhecer outras áreas e me desafiar.</p>
+   </article>
+   <article class="panel">
+    <h3>Meu jeito de trabalhar</h3>
+    <p>Sou comunicativa, gentil e tenho facilidade para me adaptar a diferentes situações. Quando assumo uma responsabilidade, procuro me dedicar e entregar um trabalho bem-feito. Sou persistente: pesquiso, testo possibilidades e continuo tentando até encontrar uma solução.</p>
+    <div class="traits"><span class="chip">Comunicação</span><span class="chip">Persistência</span><span class="chip">Adaptabilidade</span><span class="chip">Criatividade</span><span class="chip">Companheirismo</span><span class="chip">Curiosidade</span></div>
+   </article>
+  </div>
+ </div>
+</section>
+
+<section id="projetos" style="background:#f1e9e7">
+ <div class="wrap">
+  <div class="section-head"><div class="kicker">02 / Experiência prática</div><h2 class="section-title">Projetos e conquistas</h2><p class="section-desc">Experiências acadêmicas em que pude pesquisar, criar, testar ideias e trabalhar com desafios reais.</p></div>
+  <div class="cards">
+   <article class="project featured">
+    <div class="project-top"><div><h3>Minha Escola Mais Verde</h3><div style="color:var(--muted);font-size:.85rem">Liga STEAM • Projeto de sustentabilidade e tecnologia</div></div><span class="pill">Destaque</span></div>
+    <p>Identifiquei problemas reais da escola e participei da criação de uma solução tecnológica integrada para apoiar a gestão da sustentabilidade escolar.</p>
+    <ul><li>Captação e reaproveitamento de água.</li><li>Redução do desperdício de alimentos e compostagem.</li><li>Arborização e ações de cuidado ambiental.</li><li>Propostas envolvendo energia solar e monitoramento de CO₂.</li><li>Uso de ESP32 e recursos digitais para monitoramento.</li></ul>
+    <p>O desenvolvimento exigiu pesquisa, testes, correção de erros e aprendizado contínuo. Assumi a construção do sistema e transformei ideias em funcionalidades, mesmo sem experiência anterior em um projeto dessa dimensão.</p>
+    <div class="stat"><strong>Top 10</strong><span>Projeto entre os 10 selecionados da competição Liga STEAM, conforme resultado informado.</span></div>
+   </article>
+   <article class="project">
+    <div class="project-top"><div><h3>Guardiões do Clima</h3><div style="color:var(--muted);font-size:.85rem">2º ano do Ensino Médio</div></div><span class="pill">Participação</span></div>
+    <p>Participei do projeto Guardiões do Clima durante o segundo ano do Ensino Médio. A experiência ampliou meu contato com questões ambientais e sustentabilidade e fortaleceu meu interesse por iniciativas que gerem impactos positivos na escola e na comunidade.</p>
+   </article>
+  </div>
+ </div>
+</section>
+
+<section id="formacao">
+ <div class="wrap">
+  <div class="section-head"><div class="kicker">03 / Formação</div><h2 class="section-title">Formação e cursos</h2><p class="section-desc">Conhecimentos que venho construindo para ampliar minhas possibilidades profissionais.</p></div>
+  <div class="two-col">
+   <article class="panel">
+    <h3>Formação acadêmica</h3>
+    <div class="timeline">
+     <div class="timeline-item"><h3>Ensino Médio</h3><p>Em conclusão — Escola Estadual Irmã Raimunda Marques, Curvelo–MG.</p></div>
+     <div class="timeline-item"><h3>Desenvolvimento de Sistemas</h3><p>Curso em andamento.</p></div>
+    </div>
+   </article>
+   <article class="panel">
+    <h3>Cursos e estudos complementares</h3>
+    <div class="timeline">
+     <div class="timeline-item"><h3>Auxiliar de Veterinária</h3><p>Curso realizado.</p></div>
+     <div class="timeline-item"><h3>Inteligência Emocional</h3><p>Curso realizado.</p></div>
+     <div class="timeline-item"><h3>Administração</h3><p>Curso iniciado, não concluído.</p></div>
+    </div>
+   </article>
+  </div>
+ </div>
+</section>
+
+<section id="habilidades" style="background:#f1e9e7">
+ <div class="wrap">
+  <div class="section-head"><div class="kicker">04 / Competências</div><h2 class="section-title">Habilidades e ferramentas</h2><p class="section-desc">Competências desenvolvidas em atividades escolares, cursos e projetos práticos.</p></div>
+  <div class="two-col">
+   <div class="skill-list">
+    <div class="skill"><strong>Comunicação</strong><span>Facilidade para conversar, ouvir e compartilhar ideias.</span></div>
+    <div class="skill"><strong>Trabalho em equipe</strong><span>Colaboração, respeito e troca de conhecimentos.</span></div>
+    <div class="skill"><strong>Adaptabilidade</strong><span>Disposição para aprender e lidar com situações novas.</span></div>
+    <div class="skill"><strong>Resolução de problemas</strong><span>Pesquisa, testes e busca por soluções.</span></div>
+    <div class="skill"><strong>Organização</strong><span>Planejamento de tarefas e atenção aos prazos.</span></div>
+    <div class="skill"><strong>Persistência</strong><span>Dedicação para superar dificuldades e aprimorar resultados.</span></div>
+   </div>
+   <article class="panel">
+    <h3>Ferramentas e tecnologias</h3>
+    <div class="tools">
+     <span class="tool">Visual Studio Code</span><span class="tool">XAMPP</span><span class="tool">Banco de dados</span><span class="tool">ESP32</span><span class="tool">Inteligência Artificial</span><span class="tool">ChatGPT</span><span class="tool">Qwen</span>
+    </div>
+    <p class="small-note">Ferramentas utilizadas como apoio em pesquisas, desenvolvimento, programação e prototipagem.</p>
+   </article>
+  </div>
+ </div>
+</section>
+
+<section id="objetivos">
+ <div class="wrap">
+  <div class="section-head"><div class="kicker">05 / Próximos passos</div><h2 class="section-title">Objetivos profissionais</h2></div>
+  <div class="quote">
+   <p>“Quero construir uma trajetória da qual eu tenha orgulho: aprender continuamente, contribuir com bons resultados e transformar oportunidades em crescimento.”</p>
+   <span>Minha visão de futuro</span>
+  </div>
+  <div class="about-grid" style="margin-top:22px">
+   <article class="panel"><h3>O que busco</h3><p>Minha primeira oportunidade profissional, na qual eu possa adquirir experiência, desenvolver minhas habilidades, aprender com outras pessoas e contribuir com dedicação e responsabilidade.</p></article>
+   <article class="panel"><h3>Onde quero chegar</h3><p>Conquistar independência profissional e financeira, construir uma carreira sólida e, futuramente, realizar o sonho de ter minha própria empresa.</p></article>
+  </div>
+ </div>
+</section>
+
+<section id="contato" style="background:#f1e9e7">
+ <div class="wrap">
+  <div class="section-head"><div class="kicker">06 / Vamos conversar</div><h2 class="section-title">Contato</h2><p class="section-desc">Estou aberta a oportunidades de aprendizado e desenvolvimento profissional.</p></div>
+  <div class="contact-grid">
+   <article class="panel">
+    <h3>Informações</h3>
+    <div class="contact-line"><strong>Localização</strong>Curvelo — Minas Gerais</div>
+    <div class="contact-line"><strong>E-mail</strong><span>Adicione seu e-mail profissional</span></div>
+    <div class="contact-line"><strong>Telefone</strong><span>Adicione seu telefone, se desejar</span></div>
+   </article>
+   <article class="panel">
+    <h3>Uma última palavra</h3>
+    <p class="contact-note">Ainda estou no começo da minha trajetória profissional, mas tenho disposição para aprender, responsabilidade para assumir tarefas e vontade de transformar ideias em resultados.</p>
+    <p style="color:var(--wine);font-family:Georgia,serif;font-size:1.35rem;margin-bottom:0">Obrigada pela visita!</p>
+   </article>
+  </div>
+  <p class="small-note">Antes de compartilhar publicamente, substitua os campos de contato pelos dados que deseja divulgar. Você também pode incluir uma foto profissional no espaço das iniciais.</p>
+ </div>
+</section>
+</main>
+<footer>Yasmim <span>•</span> Portfólio Profissional <span>•</span> Curvelo, MG</footer>
+<script>
+const menuBtn=document.getElementById('menuBtn');
+const navlinks=document.getElementById('navlinks');
+menuBtn.addEventListener('click',()=>navlinks.classList.toggle('open'));
+navlinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navlinks.classList.remove('open')));
+</script>
+</body>
+</html>
