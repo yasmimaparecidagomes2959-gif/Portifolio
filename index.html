@@ -494,6 +494,18 @@
       padding: 9px 12px;
       font-size: 0.82rem;
       color: #544d51;
+      cursor: default;
+      transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .tool:hover,
+    .tool:focus-visible {
+      background: var(--wine);
+      border-color: var(--wine-dark);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 7px 16px rgba(75, 25, 41, 0.18);
+      outline: none;
     }
 
     .small-note {
@@ -637,19 +649,46 @@
         padding: 54px 0;
       }
     }
+
+    .btn.secondary svg { flex: 0 0 17px; width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .contact-section { background: #fffdfa; border-top: 1px solid var(--line); }
+    .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: center; }
+    .contact-actions { display: grid; gap: 12px; }
+    .contact-action { display: flex; align-items: center; gap: 14px; padding: 16px; border: 1px solid var(--line); border-radius: 14px; background: var(--paper); box-shadow: 0 8px 26px rgba(62,25,38,.04); transition: transform .2s, border-color .2s; }
+    .contact-action:hover { transform: translateY(-2px); border-color: var(--rose); }
+    .contact-icon { display: grid; place-items: center; flex: 0 0 42px; width: 42px; height: 42px; color: var(--wine); background: #f5e9ec; border-radius: 12px; }
+    .contact-icon svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+    .whatsapp-icon { color: #158b57; background: #e7f5ed; }
+    .contact-action small, .contact-action strong { display: block; }
+    .contact-action small { color: var(--muted); font-size: .65rem; letter-spacing: .1em; }
+    .contact-action strong { color: var(--wine-dark); font-size: .9rem; overflow-wrap: anywhere; }
+    .contact-arrow { margin-left: auto; color: var(--wine); font-size: 1.2rem; }
+    .navlinks .contact-tab { color: var(--wine); border: 1px solid var(--wine); border-radius: 999px; padding: 8px 13px; }
+    .navlinks .contact-tab:hover { color: #fff; background: var(--wine); }
+    @media (max-width: 800px) { .contact-inner { grid-template-columns: 1fr; } }
+    @media print {
+      .topbar, .actions, .contact-section, footer { display: none !important; }
+      body { background: #fff !important; color: #222 !important; text-align: left; }
+      .hero { padding: 20px 0 !important; background: #fff !important; }
+      section { padding: 20px 0 !important; break-inside: avoid; }
+      .wrap { max-width: 100%; }
+      .panel, .project, .feature-card, .square-item { box-shadow: none !important; }
+      a { color: #222 !important; }
+    }
   </style>
 </head>
 <body>
   <header class="topbar">
     <nav class="nav">
       <a class="brand" href="#inicio">Y.</a>
-      <button class="menu-btn" id="menuBtn" type="button" aria-label="Abrir menu">Menu</button>
+      <button class="menu-btn" id="menuBtn" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="navlinks">Menu</button>
       <div class="navlinks" id="navlinks">
         <a href="#sobre">Sobre mim</a>
         <a href="#projetos">Projetos</a>
         <a href="#formacao">Formação</a>
         <a href="#habilidades">Habilidades</a>
         <a href="#objetivos">Objetivos</a>
+        <a class="contact-tab" href="#contato"><span aria-hidden="true">✉</span> Vamos conversar</a>
       </div>
     </nav>
   </header>
@@ -661,10 +700,12 @@
           <div class="eyebrow">Portfólio profissional</div>
           <h1>Yasmim.</h1>
           <h2>Estudante • Tecnologia • Sustentabilidade • Cuidado com os animais</h2>
-          <p>Sou uma pessoa curiosa, comunicativa e persistente. Gosto de transformar ideias em projetos, aprender na prática e encontrar soluções para desafios reais. Estou construindo minha trajetória profissional com dedicação e vontade de evoluir.</p>
           <div class="actions">
             <a class="btn primary" href="#projetos">Conheça meus projetos</a>
-            <button class="btn secondary" type="button">Imprimir / salvar currículo em PDF</button>
+            <button class="btn secondary" id="printResume" type="button" aria-label="Imprimir ou salvar currículo em PDF">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8V3h10v5M7 17H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2"/><path d="M7 14h10v7H7zM17 11h.01"/></svg>
+              Imprimir / salvar currículo em PDF
+            </button>
           </div>
         </div>
 
@@ -689,7 +730,7 @@
         <div class="about-grid">
           <article class="panel">
             <h3>Minha trajetória</h3>
-            <p>Meu nome é Yasmim, moro em Curvelo–MG e estou concluindo o Ensino Médio na Escola Estadual Irmã Raimunda Marques. Sou apaixonada por animais e tenho interesse em tecnologia, inovação e sustentabilidade. Gosto de aprender coisas novas, conhecer outras áreas e me desafiar.</p>
+            <p>Meu nome é Yasmim, moro em Curvelo–MG e estou concluindo o Ensino Médio na Escola Estadual Irmã Raimunda Marques. Sou apaixonada por animais e tenho interesse em tecnologia, inovação e sustentabilidade. Gosto de aprender coisas novas, conhecer outras áreas e me desafiar. Sou uma pessoa curiosa, comunicativa e persistente. Gosto de transformar ideias em projetos, aprender na prática e encontrar soluções para desafios reais. Estou construindo minha trajetória profissional com dedicação e vontade de evoluir.</p>
           </article>
 
           <article class="panel">
@@ -721,7 +762,7 @@
             <div class="project-top">
               <div>
                 <h3>Minha Escola Mais Verde</h3>
-                <div class="project-sub">Liga STEAM • Projeto de sustentabilidade e tecnologia</div>
+                <div class="project-sub">Liga STEAM • 2026 • Projeto de sustentabilidade e tecnologia</div>
               </div>
               <span class="pill">Destaque</span>
             </div>
@@ -749,7 +790,7 @@
             <div class="project-top">
               <div>
                 <h3>Guardiões do Clima</h3>
-                <div class="project-sub">2º ano do Ensino Médio</div>
+                <div class="project-sub">2025 · 2º ano do Ensino Médio</div>
               </div>
               <span class="pill">Participação</span>
             </div>
@@ -780,12 +821,8 @@
             <h3>Formação acadêmica</h3>
             <div class="timeline">
               <div class="timeline-item">
-                <h3>Ensino Médio</h3>
+                <h3>Ensino Médio com Técnico em Desenvolvimento de Sistemas</h3>
                 <p>Em conclusão — Escola Estadual Irmã Raimunda Marques, Curvelo–MG.</p>
-              </div>
-              <div class="timeline-item">
-                <h3>Desenvolvimento de Sistemas</h3>
-                <p>Curso em andamento.</p>
               </div>
             </div>
           </article>
@@ -806,7 +843,7 @@
               </div>
               <div class="timeline-item">
                 <h3>Administração</h3>
-                <p>Curso iniciado, não concluído.</p>
+                <p>Curso dividido em etapas; etapa iniciante concluída.</p>
               </div>
             </div>
           </article>
@@ -858,15 +895,20 @@
             <span class="icon-badge" aria-label="Ferramentas e tecnologias">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5.5 18.5 10l-5 5L9 10.5l5-5Z"/><path d="M6 14.5 4 18l3.5 2 2.5-2.5"/><path d="M15 10l4 4"/><path d="M9 10 5 14"/></svg>
             </span>
-            <h3>Ferramentas e tecnologias</h3>
+            <h3>Tecnologias e conhecimentos</h3>
             <div class="tools">
-              <span class="tool">Visual Studio Code</span>
-              <span class="tool">XAMPP</span>
-              <span class="tool">Banco de dados</span>
-              <span class="tool">ESP32</span>
-              <span class="tool">Inteligência Artificial</span>
-              <span class="tool">ChatGPT</span>
-              <span class="tool">Qwen</span>
+              <span class="tool" tabindex="0">HTML</span>
+              <span class="tool" tabindex="0">CSS</span>
+              <span class="tool" tabindex="0">JavaScript</span>
+              <span class="tool" tabindex="0">Logística</span>
+              <span class="tool" tabindex="0">Programação</span>
+              <span class="tool" tabindex="0">Visual Studio Code</span>
+              <span class="tool" tabindex="0">XAMPP</span>
+              <span class="tool" tabindex="0">Banco de dados</span>
+              <span class="tool" tabindex="0">ESP32</span>
+              <span class="tool" tabindex="0">Inteligência Artificial</span>
+              <span class="tool" tabindex="0">ChatGPT</span>
+              <span class="tool" tabindex="0">Qwen</span>
             </div>
             <p class="small-note">Ferramentas utilizadas como apoio em pesquisas, desenvolvimento, programação e prototipagem.</p>
           </article>
@@ -889,16 +931,36 @@
         <div class="about-grid" style="margin-top:22px;">
           <article class="panel">
             <h3>O que busco</h3>
-            <p>Minha primeira oportunidade profissional, na qual eu possa adquirir experiência, desenvolver minhas habilidades, aprender com outras pessoas e contribuir com dedicação e responsabilidade.</p>
+            <p>Quero ampliar meus conhecimentos na área veterinária, aproveitar a formação de Auxiliar de Veterinária que já concluí e me preparar para cursar uma faculdade de Medicina Veterinária.</p>
           </article>
           <article class="panel">
             <h3>Onde quero chegar</h3>
-            <p>Conquistar independência profissional e financeira, construir uma carreira sólida e, futuramente, realizar o sonho de ter minha própria empresa.</p>
+            <p>Investir na área de veterinária, ingressar na faculdade de Medicina Veterinária e construir uma carreira dedicada ao cuidado e à saúde dos animais.</p>
           </article>
         </div>
       </div>
     </section>
   </main>
+
+  <section id="contato" class="contact-section">
+    <div class="wrap contact-inner">
+      <div>
+        <div class="kicker">06 / Vamos conversar</div>
+        <h2 class="section-title">Entre em contato</h2>
+        <p class="section-desc">Estou disponível para conversar sobre oportunidades, projetos e colaboração.</p>
+      </div>
+      <div class="contact-actions">
+        <a class="contact-action" href="mailto:yasmimaparecidagomes29592@gmail.com">
+          <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg></span>
+          <span><small>ENVIE UM E-MAIL</small><strong>yasmimaparecidagomes29592@gmail.com</strong></span><span class="contact-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="contact-action" href="https://wa.me/5531998075553" target="_blank" rel="noopener noreferrer">
+          <span class="contact-icon whatsapp-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4A8 8 0 1 1 20 11.5Z"/><path d="M9 8.5c.5 2 2 3.5 4.5 4.5l1-1 2 1c-.2 1.5-1.2 2.2-2.5 2-3.5-.7-6.8-4-7-7.2-.1-1.1.7-1.8 2-2l1 2-1 1Z"/></svg></span>
+          <span><small>CHAME NO WHATSAPP</small><strong>+55 (31) 99807-5553</strong></span><span class="contact-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
 
   <footer>Yasmim <span>•</span> Portfólio Profissional <span>•</span> Curvelo, MG</footer>
 
@@ -907,12 +969,28 @@
     const navlinks = document.getElementById('navlinks');
 
     menuBtn.addEventListener('click', () => {
-      navlinks.classList.toggle('open');
+      const isOpen = navlinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+      menuBtn.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
     });
 
     navlinks.querySelectorAll('a').forEach((a) => {
-      a.addEventListener('click', () => navlinks.classList.remove('open'));
+      a.addEventListener('click', () => {
+        navlinks.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        menuBtn.setAttribute('aria-label', 'Abrir menu');
+      });
     });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        navlinks.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        menuBtn.setAttribute('aria-label', 'Abrir menu');
+      }
+    });
+
+    document.getElementById('printResume').addEventListener('click', () => window.print());
   </script>
 </body>
 </html>
