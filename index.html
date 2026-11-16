@@ -567,7 +567,19 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(255,255,255,0.16), rgba(255,255,255,0));
+      z-index: 1;
+      background: linear-gradient(135deg, rgba(20, 25, 22, 0.18), rgba(20, 25, 22, 0.02));
+      pointer-events: none;
+    }
+
+    .project-photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      object-position: center;
     }
 
     .project-icon {
@@ -702,10 +714,7 @@
           <h2>Estudante • Tecnologia • Sustentabilidade • Cuidado com os animais</h2>
           <div class="actions">
             <a class="btn primary" href="#projetos">Conheça meus projetos</a>
-            <button class="btn secondary" id="printResume" type="button" aria-label="Imprimir ou salvar currículo em PDF">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8V3h10v5M7 17H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2"/><path d="M7 14h10v7H7zM17 11h.01"/></svg>
-              Imprimir / salvar currículo em PDF
-            </button>
+            <a class="btn secondary" href="#sobre">Sobre mim</a>
           </div>
         </div>
 
@@ -761,15 +770,13 @@
           <article class="project featured">
             <div class="project-top">
               <div>
-                <h3>Minha Escola Mais Verde</h3>
+                <h3>Green Tech 4.0</h3>
                 <div class="project-sub">Liga STEAM • 2026 • Projeto de sustentabilidade e tecnologia</div>
               </div>
               <span class="pill">Destaque</span>
             </div>
             <div class="project-visual visual-one">
-              <div class="project-icon" aria-label="Ícone de sustentabilidade">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c0-4.5-3.5-8-8-8-2.4 0-4.5 1-6 2.8C6 8.9 7 12 9 14.3c1.5 1.7 3.8 2.7 6.3 2.7 1.7 0 3.2-.5 4.7-1.5"/><path d="M12 5V3"/><path d="M9 7c1.5-1.5 3.3-2.3 5.5-2.5"/><path d="M10 18c1.2 0 2.1-.2 3.1-.8"/></svg>
-              </div>
+              <img class="project-photo" src="tecnologia.jpg" alt="Lâmpada com uma árvore e símbolos de energia limpa e sustentabilidade" loading="lazy">
             </div>
             <p>Identifiquei problemas reais da escola e participei da criação de uma solução tecnológica integrada para apoiar a gestão da sustentabilidade escolar.</p>
             <ul>
@@ -795,9 +802,7 @@
               <span class="pill">Participação</span>
             </div>
             <div class="project-visual visual-two">
-              <div class="project-icon" aria-label="Ícone de clima">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18h10a4 4 0 0 0 .7-7.9A5.5 5.5 0 0 0 12.1 5a5 5 0 0 0-4.9 3.7A4.2 4.2 0 0 0 7 18Z"/><path d="M9 18v2"/><path d="M15 18v2"/><path d="M12 20v2"/></svg>
-              </div>
+              <img class="project-photo" src="13-11-2026-Visita-tecnica-na-Ipuca-Foto-Jonnathan-Smith-11-scaled%20%281%29.jpg" alt="Grupo de cidadãos e profissionais em uma visita técnica de campo" loading="lazy">
             </div>
             <p>Participei do projeto Guardiões do Clima durante o segundo ano do Ensino Médio. A experiência ampliou meu contato com sustentabilidade e com iniciativas ambientais na escola e na comunidade.</p>
           </article>
@@ -907,8 +912,6 @@
               <span class="tool" tabindex="0">Banco de dados</span>
               <span class="tool" tabindex="0">ESP32</span>
               <span class="tool" tabindex="0">Inteligência Artificial</span>
-              <span class="tool" tabindex="0">ChatGPT</span>
-              <span class="tool" tabindex="0">Qwen</span>
             </div>
             <p class="small-note">Ferramentas utilizadas como apoio em pesquisas, desenvolvimento, programação e prototipagem.</p>
           </article>
@@ -990,7 +993,6 @@
       }
     });
 
-    document.getElementById('printResume').addEventListener('click', () => window.print());
   </script>
 </body>
 </html>
